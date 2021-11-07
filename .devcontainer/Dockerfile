@@ -1,7 +1,5 @@
-# Load variables
+# Select image
 ARG PYTHON_VERSION
-
-# Choice image
 FROM mcr.microsoft.com/vscode/devcontainers/python:${PYTHON_VERSION}
 
 # Update apt
