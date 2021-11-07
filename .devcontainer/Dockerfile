@@ -24,6 +24,3 @@ COPY requirements*.txt /tmp/pip-tmp/
 RUN pip install --upgrade pip \
 	&& pip --no-cache-dir install -r /tmp/pip-tmp/requirements.txt -r /tmp/pip-tmp/requirements-dev.txt \
 	&& rm -rf /tmp/pip-tmp
-
-
-
