@@ -5,7 +5,7 @@
 		"context": "..",
 		"args": {
 			"PYTHON_VERSION": "latest",
-		}
+		},
 	},
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python",

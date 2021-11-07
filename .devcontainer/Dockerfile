@@ -4,6 +4,11 @@ ARG PYTHON_VERSION
 # Choice image
 FROM mcr.microsoft.com/vscode/devcontainers/python:${PYTHON_VERSION}
 
+# Update apt
+RUN apt-get update \
+	&& apt upgrade -y \
+	&& export DEBIAN_FRONTEND=noninteractive
+
 # Allow the vscode user to pip install globally w/o sudo
 ENV PIP_TARGET=/usr/local/pip-global
 ENV PYTHONPATH=${PIP_TARGET}:${PYTHONPATH}
@@ -13,11 +18,6 @@ RUN if ! cat /etc/group | grep -e "^pip-global:" > /dev/null 2>&1; then groupadd
 	&& umask 0002 && mkdir -p ${PIP_TARGET} \
 	&& chown :pip-global ${PIP_TARGET} \
 	&& ( [ ! -f "/etc/profile.d/00-restore-env.sh" ] || sed -i -e "s/export PATH=/export PATH=\/usr\/local\/pip-global:/" /etc/profile.d/00-restore-env.sh )
-
-# Update apt
-RUN apt-get update \
-	&& apt upgrade -y \
-	&& export DEBIAN_FRONTEND=noninteractive
 
 # Update pip and install packages
 COPY requirements*.txt /tmp/pip-tmp/
