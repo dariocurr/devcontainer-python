@@ -26,9 +26,5 @@
 		"ms-python.vscode-pylance",
 		"eamodio.gitlens",
 	],
-	"runArgs": [
-		"--env-file",
-		".env",
-	],
 	"remoteUser": "vscode",
 }
