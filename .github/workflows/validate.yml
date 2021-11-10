@@ -26,3 +26,4 @@ jobs:
           from_branch: dev
           target_branch: main
           github_token: ${{ github.token }}
+          message: Merging using github actions
