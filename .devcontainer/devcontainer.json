@@ -3,9 +3,7 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
-		"args": {
-			"PYTHON_VERSION": "latest",
-		},
+		"args": {},
 	},
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python",
