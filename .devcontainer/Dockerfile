@@ -1,3 +1,5 @@
+# for format details, see https://docs.docker.com/engine/reference/builder/
+
 # select image
 ARG PYTHON_VERSION="latest"
 FROM mcr.microsoft.com/vscode/devcontainers/python:${PYTHON_VERSION}
