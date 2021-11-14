@@ -1,12 +1,18 @@
+# for format details, see https://docs.github.com/en/actions
+
 name: Validate
 
 on:
   push:
+    paths-ignore:
+      - ".vscode/**"
+      - "LICENSE"
+      - "README.md"
     branches:
       - dev
   pull_request:
     branches:
-      - dev
+      - main
 
 jobs:
   validation:
@@ -26,4 +32,4 @@ jobs:
           from_branch: dev
           target_branch: main
           github_token: ${{ github.token }}
-          message: Merging using github actions
+          message: merging using github actions
