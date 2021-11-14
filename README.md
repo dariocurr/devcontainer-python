@@ -11,8 +11,10 @@ stack and its prerequisites.
 This is a template project that using a _dev container_, automatically
 configures a **Python** development environment with few easy steps.
 
-> Checkout others `devcontainer-*` template projects
-> [here](https://github.com/dariocurr?tab=repositories&q=devcontainer)
+> Checkout others
+> [`devcontainer` template projects](https://github.com/dariocurr?tab=repositories&q=devcontainer)
+
+Feel free to dive into configuration files and modify them to suit your needs.
 
 ## Setting up the development container
 
