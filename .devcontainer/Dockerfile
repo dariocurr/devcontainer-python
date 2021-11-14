@@ -6,7 +6,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:${PYTHON_VERSION}
 LABEL author="dariocurr@gmail.com" maintainer="dariocurr@gmail.com" version="0.0.1"
 
 # update apt
-RUN apt-get update \
+RUN apt update \
 	&& apt upgrade -y \
 	&& export DEBIAN_FRONTEND=noninteractive
 
