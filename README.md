@@ -14,6 +14,14 @@ configures a **Python** development environment with few easy steps.
 > Checkout others
 > [`devcontainer` template projects](https://github.com/dariocurr?tab=repositories&q=devcontainer)
 
+This template includes a
+**[GitHub Action](https://github.com/features/actions)** which ensures that any
+changes made to the `dev` branch still allow Docker to build the _dev container_
+correctly. If so, then the `main` branch is merged with the `dev` oen.
+
+> You should never directly push on the `main` branch as
+> **[Git best practices](https://git-scm.com/book)** recommend
+
 Feel free to dive into configuration files and modify them to suit your needs.
 
 ## Setting up the development container
