@@ -1,12 +1,18 @@
+# for format details, see https://docs.github.com/en/actions
+
 name: Validate
 
 on:
   push:
+    paths-ignore:
+      - ".vscode/**"
+      - "LICENSE"
+      - "README.md"
     branches:
       - dev
   pull_request:
     branches:
-      - dev
+      - main
 
 jobs:
   validation:
