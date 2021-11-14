@@ -9,7 +9,7 @@ stack and its prerequisites.
 > **[Visual Studio Code Remote - Containers](https://aka.ms/vscode-remote/containers)**
 
 This is a template project that using a _dev container_, automatically
-configures a **`Python`** development environment with few easy steps.
+configures a **Python** development environment with few easy steps.
 
 > Checkout others `devcontainer-*` template projects
 > [here](https://github.com/dariocurr?tab=repositories&q=devcontainer)
