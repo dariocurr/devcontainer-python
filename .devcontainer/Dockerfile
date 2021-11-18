@@ -10,9 +10,6 @@ RUN apt update \
 	&& apt upgrade -y \
 	&& export DEBIAN_FRONTEND=noninteractive
 
-# add zsh configuration
-COPY .devcontainer/.zshrc .
-
 # allow the vscode user to pip install globally w/o sudo
 ENV PIP_TARGET=/usr/local/pip-global
 ENV PYTHONPATH=${PIP_TARGET}:${PYTHONPATH}
@@ -28,3 +25,6 @@ COPY requirements*.txt /tmp/pip-tmp/
 RUN pip install --upgrade pip \
 	&& pip --no-cache-dir install -r /tmp/pip-tmp/requirements.txt -r /tmp/pip-tmp/requirements-dev.txt \
 	&& rm -rf /tmp/pip-tmp
+
+# add zsh configuration
+COPY .devcontainer/.zshrc /home/vscode/
