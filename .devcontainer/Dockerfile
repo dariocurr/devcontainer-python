@@ -26,5 +26,9 @@ RUN pip install --upgrade pip \
 	&& pip --no-cache-dir install -r /tmp/pip-tmp/requirements.txt -r /tmp/pip-tmp/requirements-dev.txt \
 	&& rm -rf /tmp/pip-tmp
 
-# add zsh configuration
-COPY .devcontainer/.zshrc /home/vscode/
+# add zsh configuration and replace oh-my-zsh with antigen
+USER vscode
+WORKDIR /home/vscode/
+RUN rm -r .oh-my-zsh \
+	&& git clone https://github.com/zsh-users/antigen.git .antigen
+COPY .devcontainer/.zshrc .
