@@ -6,8 +6,8 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:${PYTHON_VERSION}
 LABEL author="dariocurr@gmail.com" maintainer="dariocurr@gmail.com" version="0.0.1"
 
 # update apt
-RUN apt update \
-	&& apt upgrade -y \
+RUN apt -qq update \
+	&& apt -qq upgrade -y \
 	&& export DEBIAN_FRONTEND=noninteractive
 
 # allow the vscode user to pip install globally w/o sudo
@@ -22,13 +22,13 @@ RUN if ! cat /etc/group | grep -e "^pip-global:" > /dev/null 2>&1; then groupadd
 
 # update pip and install packages
 COPY requirements*.txt /tmp/pip-tmp/
-RUN pip install --upgrade pip \
-	&& pip --no-cache-dir install -r /tmp/pip-tmp/requirements.txt -r /tmp/pip-tmp/requirements-dev.txt \
+RUN pip --no-cache-dir -q install --upgrade pip \
+	&& pip --no-cache-dir -q install -r /tmp/pip-tmp/requirements.txt -r /tmp/pip-tmp/requirements-dev.txt \
 	&& rm -rf /tmp/pip-tmp
 
 # add zsh configuration and replace oh-my-zsh with antigen
 USER vscode
 WORKDIR /home/vscode/
 RUN rm -r .oh-my-zsh \
-	&& git clone https://github.com/zsh-users/antigen.git .antigen
+	&& git clone -q https://github.com/zsh-users/antigen.git .antigen
 COPY .devcontainer/.zshrc .
