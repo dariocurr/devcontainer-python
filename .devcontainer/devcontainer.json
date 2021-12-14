@@ -23,6 +23,7 @@
 	"extensions": [
 		"ms-python.python",
 		"ms-python.vscode-pylance",
+		"ms-toolsai.jupyter",
 		"eamodio.gitlens",
 	],
 	"remoteUser": "vscode",
