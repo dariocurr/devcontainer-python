@@ -15,12 +15,20 @@ on:
       - main
 
 jobs:
-  merge_after_validation:
+  validation:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: docker build . --file .devcontainer/Dockerfile
+
       - name: Merge dev with main branch
-        uses: dariocurr/validate@main
+        uses: devmasx/merge-branch@master
         with:
-          path: .devcontainer/Dockerfile
-          from: dev
-          to: main
+          type: now
+          from_branch: dev
+          target_branch: main
+          github_token: ${{ github.token }}
+          message: merging using github actions
