@@ -5,7 +5,6 @@ name: Validate
 on:
   push:
     paths-ignore:
-      - ".vscode/**"
       - ".gitignore"
       - "LICENSE"
       - "README.md"
@@ -16,21 +15,12 @@ on:
       - main
 
 jobs:
-  validation:
+  merge_after_validation:
     runs-on: ubuntu-latest
     steps:
-    
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Build the Docker image
-        run: docker build . --file .devcontainer/Dockerfile --tag devcontainer-python:$(date +%s)
-
       - name: Merge dev with main branch
-        uses: devmasx/merge-branch@master
+        uses: dariocurr/validate@main
         with:
-          type: now
-          from_branch: dev
-          target_branch: main
-          github_token: ${{ github.token }}
-          message: merging using github actions
+          path: .devcontainer/Dockerfile
+          from: dev
+          to: main
