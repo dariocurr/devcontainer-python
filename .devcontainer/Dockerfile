@@ -21,7 +21,7 @@ RUN if ! cat /etc/group | grep -e "^pip-global:" > /dev/null 2>&1; then groupadd
 	&& ( [ ! -f "/etc/profile.d/00-restore-env.sh" ] || sed -i -e "s/export PATH=/export PATH=\/usr\/local\/pip-global:/" /etc/profile.d/00-restore-env.sh )
 
 # update pip and install packages
-COPY requirements*.txt /tmp/pip-tmp/
+COPY ./requirements*.txt /tmp/pip-tmp/
 RUN pip --no-cache-dir -q install --upgrade pip \
 	&& pip --no-cache-dir -q install -r /tmp/pip-tmp/requirements.txt -r /tmp/pip-tmp/requirements-dev.txt \
 	&& rm -rf /tmp/pip-tmp
@@ -30,5 +30,5 @@ RUN pip --no-cache-dir -q install --upgrade pip \
 USER vscode
 WORKDIR /home/vscode/
 RUN rm -r .oh-my-zsh \
-	&& git clone -q git@github.com:zsh-users/antigen.git .antigen
+	&& git clone -q https://github.com/zsh-users/antigen.git .antigen
 ADD --chown=vscode https://gist.githubusercontent.com/dariocurr/9792ae1fb6ddf736d8fea9e20eb13e26/raw/ .zshrc
