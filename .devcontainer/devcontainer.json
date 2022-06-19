@@ -4,27 +4,9 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
-		// avoid specifying args here to prevent errors when using classic docker build
+		"args": {
+			"USER": "vscode"
+		}
 	},
-	"settings": {
-		"python.pythonPath": "/usr/local/bin/python",
-		"python.languageServer": "Pylance",
-		"python.formatting.provider": "black",
-		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-		"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-		"python.linting.enabled": true,
-		"python.linting.flake8Enabled": true,
-		"python.linting.mypyEnabled": false,
-		"[python]": {
-			"editor.formatOnSave": true,
-			"editor.formatOnSaveMode": "file",
-		},
-	},
-	"extensions": [
-		"ms-python.python",
-		"ms-python.vscode-pylance",
-		"ms-toolsai.jupyter",
-		"eamodio.gitlens",
-	],
-	"remoteUser": "vscode",
+	"remoteUser": "vscode"
 }
