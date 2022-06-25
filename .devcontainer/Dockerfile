@@ -12,7 +12,7 @@ RUN apt -qq update \
 	&& export DEBIAN_FRONTEND=noninteractive
 
 # read and change user
-ARG USER
+ARG USER="vscode"
 USER ${USER}
 
 # update pip and install packages
